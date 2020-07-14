@@ -671,7 +671,7 @@
                                 <div class="card-nav-list on">今日疯抢</div>
                                 <div class="card-nav-list">量贩装</div>
                             </div>
-                            <a href="#" class="card-content">
+                            <a href="javascript:;" class="card-content">
                                 <span class="card-image"><img src="images/card-goods1.jpg" alt="" /></span>
                                 <span class="card-arrow">
                                     <span class="card-icon"></span>
@@ -679,7 +679,7 @@
                                     <span class="card-slogan-2">1元超值疯抢中</span>
                                 </span>
                             </a>
-                            <a href="#" class="card-content hide">
+                            <a href="javascript:;" class="card-content">
                                 <span class="card-image"><img src="images/card-goods2.jpg" alt="" /></span>
                                 <span class="card-arrow">
                                     <span class="card-icon"></span>
@@ -1379,7 +1379,36 @@
 <script src="js/tabcard.js"></script>
 <script src="js/index.js"></script>
 <script>
-    var index=new Index();
+    var links=document.querySelectorAll(".card-nav-list");
+    var lists=document.querySelectorAll(".card-content");
+    for (var i = 0; i < links.length; i++) {
+        (function(i){
+            links[i].onmouseover=function() {
+                for(var j = 0; j < lists.length; j++){
+                    lists[j].style.display="none";
+                    links[j].style.background="#ccc";
+                }
+                lists[i].style.display="block";
+                this.style.background=" #00B262";
+            }
+        })(i);
+    }
+    var y = 0;
+        setInterval(() => {
+            if (y) {
+                links[0].style.background = "#00B262";
+                lists[0].style.display = "block";
+                links[1].style.background = "#ccc";
+                lists[1].style.display = "none";
+                y = false;
+            } else {
+                links[1].style.background = "#00B262";
+                lists[1].style.display = "block";
+                links[0].style.background = "#ccc";
+                lists[0].style.display = "none";
+                y = true
+            }
+        }, 3000);
 </script>
 </body>
 </html>
